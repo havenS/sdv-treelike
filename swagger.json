@@ -1,0 +1,422 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Treelike",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "components": {
+    "responses": {
+      "Forbidden": {
+        "description": "Access token is missing or invalid"
+      },
+      "Accepted": {
+        "description": "The request was accepted"
+      },
+      "Created": {
+        "description": "The resource has been created"
+      },
+      "NotFound": {
+        "description": "The resource has been created"
+      },
+      "NotAcceptable": {
+        "description": "The resource has been created"
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      },
+      "BasicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
+    "schemas": {
+      "Any": {
+        "description": "Any JSON object not defined as schema"
+      },
+      "PaginationMeta": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "number",
+            "example": 100,
+            "nullable": false
+          },
+          "page": {
+            "type": "number",
+            "example": 2,
+            "nullable": false
+          },
+          "perPage": {
+            "type": "number",
+            "example": 10,
+            "nullable": false
+          },
+          "currentPage": {
+            "type": "number",
+            "example": 3,
+            "nullable": false
+          },
+          "lastPage": {
+            "type": "number",
+            "example": 10,
+            "nullable": false
+          },
+          "firstPage": {
+            "type": "number",
+            "example": 1,
+            "nullable": false
+          },
+          "lastPageUrl": {
+            "type": "string",
+            "example": "/?page=10",
+            "nullable": false
+          },
+          "firstPageUrl": {
+            "type": "string",
+            "example": "/?page=1",
+            "nullable": false
+          },
+          "nextPageUrl": {
+            "type": "string",
+            "example": "/?page=6",
+            "nullable": false
+          },
+          "previousPageUrl": {
+            "type": "string",
+            "example": "/?page=5",
+            "nullable": false
+          }
+        }
+      },
+      "Link": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "profiler": {
+            "$ref": "#/components/schemas/Profiler",
+            "example": "string"
+          },
+          "provider": {
+            "$ref": "#/components/schemas/Provider",
+            "example": "string"
+          },
+          "view_stats_links": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewStatsLink",
+              "example": "string"
+            }
+          },
+          "id": {
+            "type": "number",
+            "example": 799
+          },
+          "title": {
+            "type": "string",
+            "example": "Lorem Ipsum"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "logo": {
+            "type": "string",
+            "example": "string"
+          },
+          "description": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet"
+          },
+          "category": {
+            "type": "string",
+            "example": "string"
+          },
+          "order": {
+            "type": "number",
+            "example": 872
+          }
+        },
+        "description": "Link (Model)"
+      },
+      "Profiler": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "profile": {
+            "$ref": "#/components/schemas/User",
+            "example": "string"
+          },
+          "view_stats_profil_rs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ViewStatsProfiler",
+              "example": "string"
+            }
+          },
+          "id": {
+            "type": "number",
+            "example": 656
+          },
+          "url": {
+            "type": "string",
+            "example": "https://example.com"
+          },
+          "bio": {
+            "type": "string",
+            "example": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          }
+        },
+        "description": "Profiler (Model)"
+      },
+      "Provider": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 848
+          },
+          "name": {
+            "type": "string",
+            "example": "John Doe"
+          },
+          "path": {
+            "type": "string",
+            "example": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          }
+        },
+        "description": "Provider (Model)"
+      },
+      "User": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 653
+          },
+          "email": {
+            "type": "string",
+            "example": "johndoe@example.com",
+            "format": "email"
+          },
+          "phone": {
+            "type": "string",
+            "example": "string"
+          },
+          "username": {
+            "type": "string",
+            "example": "string"
+          },
+          "avatar": {
+            "type": "string",
+            "example": "https://example.com/avatar.png"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          }
+        },
+        "description": "User (Model)"
+      },
+      "ViewStatsLink": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 49
+          },
+          "link_id": {
+            "type": "number",
+            "example": 577
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          }
+        },
+        "description": "ViewStatsLink (Model)"
+      },
+      "ViewStatsProfiler": {
+        "type": "object",
+        "required": [],
+        "properties": {
+          "id": {
+            "type": "number",
+            "example": 345
+          },
+          "profiler_id": {
+            "type": "number",
+            "example": 41
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "example": "2021-03-23T16:13:08.489+01:00",
+            "format": "date-time"
+          }
+        },
+        "description": "ViewStatsProfiler (Model)"
+      }
+    }
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": " (register)",
+        "description": "\n\n _/Users/julienfournier/projets/treelike/config/../app/controllers/auth_controller.ts_ - **register**",
+        "parameters": [],
+        "tags": [
+          "REGISTER"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": " (login)",
+        "description": "\n\n _/Users/julienfournier/projets/treelike/config/../app/controllers/auth_controller.ts_ - **login**",
+        "parameters": [],
+        "tags": [
+          "LOGIN"
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {}
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        }
+      }
+    },
+    "/user": {
+      "put": {
+        "summary": "Update  (update)",
+        "description": "\n\n _/Users/julienfournier/projets/treelike/config/../app/controllers/users_controller.ts_ - **update**",
+        "parameters": [],
+        "tags": [
+          ""
+        ],
+        "responses": {
+          "401": {
+            "description": "Returns **401** (Unauthorized)"
+          },
+          "403": {
+            "description": "Returns **403** (Forbidden)"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": [
+              "access"
+            ]
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {}
+          }
+        }
+      },
+      "get": {
+        "summary": " (me)",
+        "description": "\n\n _/Users/julienfournier/projets/treelike/config/../app/controllers/users_controller.ts_ - **me**",
+        "parameters": [],
+        "tags": [
+          ""
+        ],
+        "responses": {
+          "401": {
+            "description": "Returns **401** (Unauthorized)"
+          },
+          "403": {
+            "description": "Returns **403** (Forbidden)"
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": [
+              "access"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "REGISTER",
+      "description": "Everything related to REGISTER"
+    },
+    {
+      "name": "LOGIN",
+      "description": "Everything related to LOGIN"
+    }
+  ]
+}
